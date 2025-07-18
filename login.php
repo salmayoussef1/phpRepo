@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (isset($_SESSION['user'])) {
+    header("Location: index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,32 +66,32 @@
         </div>
       </form>
       <?php
-      if(isset($_GET['error'])){
-       $message =$_GET['error'];
-      }
-       if($message){
-      ?>
-      <div>
-        <?= $message ?>
-      </div>
-      <?php
-        }
-      ?>
-      <div class="social-auth-links text-center mt-2 mb-3">
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div>
-      <!-- /.social-auth-links -->
+          if (isset($_GET['error'])) {
+              $message = $_GET['error'];
+              if ($message) {
+          ?>
+              <div style="
+                  background-color: #f8d7da;
+                  color: #721c24;
+                  padding: 10px;
+                  border: 1px solid #f5c6cb;
+                  border-radius: 5px;
+                  margin: 10px 0;
+                  text-align: center;
+                  font-weight: bold;
+              ">
+                  <?= htmlspecialchars($message) ?>
+              </div>
+          <?php
+              }
+          }
+        ?>
 
       <p class="mb-1">
         <a href="forgot-password.html">I forgot my password</a>
       </p>
       <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
+        <a href="register.php" class="text-center">Register a new membership</a>
       </p>
     </div>
     <!-- /.card-body -->
@@ -93,10 +101,10 @@
 <!-- /.login-box -->
 
 <!-- jQuery -->
-<script src="../../assets/plugins/jquery/jquery.min.js"></script>
+<script src="assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../assets/dist/js/adminlte.min.js"></script>
+<script src="assets/dist/js/adminlte.min.js"></script>
 </body>
 </html>
